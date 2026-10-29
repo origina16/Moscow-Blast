@@ -32,7 +32,8 @@ src/app/...                 — страницы: главная, турниры
    npm install
    ```
 2. Создайте проект на https://supabase.com (бесплатно, tier Free).
-3. В Supabase → **SQL Editor** выполните целиком `supabase/schema.sql`.
+3. В Supabase → **SQL Editor** выполните целиком `supabase/schema.sql`,
+   затем `supabase/migration_002_team_format.sql` (формат «6 команд × 5 игроков»).
 4. В **Project Settings → API** возьмите ключи и создайте `.env.local` по образцу `.env.example`:
    - `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`
    - `SUPABASE_SERVICE_ROLE_KEY` (серверный, не публиковать!)

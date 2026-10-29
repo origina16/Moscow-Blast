@@ -27,6 +27,13 @@ export function TournamentForm({ action }: { action: OrgAction }) {
         <label className="label" htmlFor="starts_at">Дата и время начала</label>
         <input id="starts_at" name="starts_at" type="datetime-local" className="input" />
       </div>
+      <div>
+        <label className="label" htmlFor="format">Формат турнира</label>
+        <select id="format" name="format" className="input" defaultValue="teams_6x5">
+          <option value="teams_6x5">6 команд × 5 игроков (группы A/B + сетка, всё Bo3)</option>
+          <option value="">Классический (просто список матчей)</option>
+        </select>
+      </div>
       {state?.error && <p className="rounded-lg bg-red-500/10 px-3 py-2 text-sm text-red-400">{state.error}</p>}
       <button className="btn disabled:opacity-50" disabled={pending}>
         {pending ? "Создаём..." : "Создать турнир"}

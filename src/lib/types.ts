@@ -20,6 +20,37 @@ export interface Tournament {
   created_by: string;
   starts_at: string | null;
   status: "upcoming" | "live" | "finished";
+  format: "teams_6x5" | null;   // null = классический режим без команд
+  created_at?: string;
+}
+
+export interface Team {
+  id: number;
+  tournament_id: number;
+  name: string;
+  group_name: "A" | "B" | null;
+  created_at?: string;
+}
+
+export interface TeamPlayerRow {
+  team_id: number;
+  player_id: number;
+  is_captain: boolean;
+}
+
+export type Stage = "group" | "semifinal" | "final";
+
+export interface Series {
+  id: number;
+  tournament_id: number;
+  stage: Stage;
+  round: number;
+  group_name: "A" | "B" | null;
+  team1_id: number | null;
+  team2_id: number | null;
+  team1_wins: number;
+  team2_wins: number;
+  status: "upcoming" | "live" | "finished";
   created_at?: string;
 }
 
@@ -27,6 +58,9 @@ export interface MatchRow {
   id: number;
   tournament_id: number;
   map_id: number | null;
+  series_id: number | null;
+  match_team1_id: number | null;  // команда — «team 1» демки (стартовала за T)
+  match_team2_id: number | null;
   played_at: string;
   team1_name: string;
   team2_name: string;
